@@ -44,7 +44,7 @@ ggplot() +
        scale_color_gradient(low = "grey90", high = "grey10", name = "white oak") +
       labs(title = "Distribution of white oak", x = "Longitude", y = "Latitude")
       
-
+![image](https://github.com/user-attachments/assets/0c0b036a-689f-4a16-b456-73b3727d31e5)
 
 
   
