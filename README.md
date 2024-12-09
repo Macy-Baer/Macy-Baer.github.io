@@ -5,3 +5,47 @@ first repository for pages
 ##Biogeography course final project site
 -work description
 - 
+#Download & install all necessary packages
+
+install.packages (c("knitr","rmarkdown","dplyr","plyr","ggplot2","sf","tidyverse","rnaturalearth","rnaturalearthdata","classInt","gridExtra", "devtools"))
+
+library(knitr)
+library(rmarkdown)
+library(dplyr)
+library(plyr)
+library(ggplot2)
+library(sf)
+library(tidyverse)
+library(devtools)
+devtools :: install_github("ropensci/rnaturalearthhires")
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(classInt)
+library(gridExtra)
+
+#Read FIA database 
+tree <- readRDS("U:/Biogeo/FIA_tree_master1.RDS")
+
+#Filter needed species
+oak <- tree %>%
+  filter(GENUS == "Quercus")
+
+#Create distribution figures for individual species with rnaturalearth
+oakspecies <- oak %>%
+  filter(COMMON_NAME == "white oak") 
+
+usa <- ne_states(country = "United States of America", returnclass = "sf")
+usa31 <- usa %>%
+  filter(longitude >=-95 & longitude <= -65)
+
+ggplot() +
+   geom_sf(data = usa31, fill = "lightblue", color = "grey50")+
+  geom_point(data= oakspecies, aes(x= LON, y= LAT), size = 0.5) +
+       scale_color_gradient(low = "grey90", high = "grey10", name = "white oak") +
+      labs(title = "Distribution of white oak", x = "Longitude", y = "Latitude")
+      
+
+
+
+  
+
