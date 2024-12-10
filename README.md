@@ -5,6 +5,12 @@ first repository for pages
 ##Biogeography course final project site
 -work description
 - 
+
+##Introduction
+-
+I chose these species because oak trees have a long evolutionary history. This ensures a large number of species to observe, and improves the chance that significant spatial patterns will emerge.
+The objective of my project is to show the distribution of various oak species in the FIA database and compare their placement in the eastern United States. The species shown were chosen due to their genetic/phylogenetic grouping defined in Hipp et al
+
 #Download & install all necessary packages
 
 install.packages (c("knitr","rmarkdown","dplyr","plyr","ggplot2","sf","tidyverse","rnaturalearth","rnaturalearthdata","classInt","gridExtra", "devtools"))
