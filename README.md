@@ -1,19 +1,37 @@
 # Macy-Baer.github.io
-first repository for pages
+first repository 
 
-## Project title
+## Mapping Oak Distribution: Spatial Patterns and Phylogenetic Links
 ##Biogeography course final project site
--work description
-- 
-
-##Introduction
 -
-I chose these species because oak trees have a long evolutionary history. This ensures a large number of species to observe, and improves the chance that significant spatial patterns will emerge.
-The objective of my project is to show the distribution of various oak species in the FIA database and compare their placement in the eastern United States. The species shown were chosen due to their genetic/phylogenetic grouping defined in Hipp et al
+
+##Introduction:
+-
+-I chose these species because oak trees have a long evolutionary history. This ensures a large number of species to observe, and improves the chance that significant spatial patterns will emerge.
+
+-The objective of my project is to show the distribution of various oak species in the FIA database and compare their placement in the eastern United States. The species shown were chosen due to their genetic/phylogenetic grouping defined in Hipp et al
+
+##Hipp et al:
+- 
+-Gene flow, species migration, & evolutionary history of oaks
+
+-Objective: phylogenomic sampling with Quercus robur genome to define lineages
+
+-Methods (specifically for phylogenetic analysis): Maximum likelihood (ML) analysis in RAxML, then used to create an all-tips tree which grouped all 246 observed Quercus species
+
+##Data:
+-
+-I chose species that were within the same grouping on the Figure 1 all-tips tree (Hipp et al.), and native to the eastern United States.
+
+-FIA database
+
+##Methods:
+-
 
 #Download & install all necessary packages
 
 install.packages (c("knitr","rmarkdown","dplyr","plyr","ggplot2","sf","tidyverse","rnaturalearth","rnaturalearthdata","classInt","gridExtra", "devtools"))
+
 
 
 library(knitr)
@@ -30,20 +48,25 @@ library(rnaturalearthdata)
 library(classInt)
 library(gridExtra)
 
+
 #Read FIA database 
 tree <- readRDS("U:/Biogeo/FIA_tree_master1.RDS")
+
 
 #Filter needed species
 oak <- tree %>%
   filter(GENUS == "Quercus")
 
-#Create distribution figures for individual species with rnaturalearth
+
+#Create distribution figures for individual species with rnaturalearth 
 oakspecies <- oak %>%
   filter(COMMON_NAME == "white oak") 
+
 
 usa <- ne_states(country = "United States of America", returnclass = "sf")
 usa31 <- usa %>%
   filter(longitude >=-95 & longitude <= -65)
+
 
 ggplot() +
    geom_sf(data = usa31, fill = "lightblue", color = "grey50")+
@@ -52,8 +75,13 @@ ggplot() +
       labs(title = "Distribution of white oak", x = "Longitude", y = "Latitude")
 
 
+
 #example species to test code: white oak
 ![image](https://github.com/user-attachments/assets/0c0b036a-689f-4a16-b456-73b3727d31e5)
+
+
+#change each species (common name) in code to map them out
+#choose group from Fig 1 (Hipp et al., then map the distriutions of species within each group)
 
 #Group: Prinoids
 -
@@ -165,3 +193,33 @@ ggplot() +
       labs(title = "Distribution of dwarf post oak", x = "Longitude", y = "Latitude")
 
 ![image](https://github.com/user-attachments/assets/c04c1507-d8b3-4dc1-8bee-a512b971a594)
+
+##Results
+-
+Group: Prinoids
+
+-the bur oak and overcup oak did not show any spatial similarities, overlap, or discernable patterns
+
+
+Group: Albae
+
+-These species showed a migration southward
+
+-the swamp white oak and swamp chestnut oak showed sparse distributions, while the chestnut oak (central) was condensed
+
+
+Group: Stellatae
+
+-the post oak was abundant, and the dwarf post oak was scarse
+
+-these two species showed a possible eastern migration
+
+
+##Citations:
+-
+
+Hipp, Andrew L., et al. “Genomic landscape of the Global Oak Phylogeny.” New Phytologist, vol. 226, no. 4, 14 Oct. 2019, pp. 1198–1212, https://doi.org/10.1111/nph.16162. 
+
+FIA database
+
+
