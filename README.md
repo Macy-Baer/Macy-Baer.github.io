@@ -50,6 +50,8 @@ ggplot() +
   geom_point(data= oakspecies, aes(x= LON, y= LAT), size = 0.5) +
        scale_color_gradient(low = "grey90", high = "grey10", name = "white oak") +
       labs(title = "Distribution of white oak", x = "Longitude", y = "Latitude")
+
+
 #example species to test code: white oak
 ![image](https://github.com/user-attachments/assets/0c0b036a-689f-4a16-b456-73b3727d31e5)
 
